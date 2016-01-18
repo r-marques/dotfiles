@@ -47,3 +47,5 @@ let g:airline_powerline_fonts=1
 " Buffer management
 map <leader>l :bnext<CR>
 map <leader>h :bprevious<CR>
+map <leader>q :bp <BAR> bd #<CR>
+set hidden
