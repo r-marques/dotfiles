@@ -30,6 +30,7 @@ set shiftwidth=4
 set showmatch
 set encoding=utf-8
 let python_highlight_all=1
+let mapleader = "\<Space>"
 
 " Solarized
 set background=dark
@@ -42,3 +43,7 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.egg-info$']
 " vim-airline
 set laststatus=2
 let g:airline_powerline_fonts=1
+
+" Buffer management
+map <leader>l :bnext<CR>
+map <leader>h :bprevious<CR>
