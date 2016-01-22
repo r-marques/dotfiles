@@ -51,5 +51,8 @@ map <leader>h :bprevious<CR>
 map <leader>q :bp <BAR> bd #<CR>
 set hidden
 
-" tell vim that *.md files are markdown
+" markdown settings
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+au BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+set complete+=kspell
