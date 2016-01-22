@@ -15,6 +15,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'suan/vim-instant-markdown'
 
 call vundle#end()
 filetype plugin indent on
@@ -49,3 +50,6 @@ map <leader>l :bnext<CR>
 map <leader>h :bprevious<CR>
 map <leader>q :bp <BAR> bd #<CR>
 set hidden
+
+" tell vim that *.md files are markdown
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
