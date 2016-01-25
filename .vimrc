@@ -32,6 +32,7 @@ set showmatch
 set encoding=utf-8
 let python_highlight_all=1
 let mapleader = "\<Space>"
+set mouse=a
 
 " Solarized
 set background=dark
