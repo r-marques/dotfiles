@@ -57,3 +57,6 @@ au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 set complete+=kspell
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
