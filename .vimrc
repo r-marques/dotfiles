@@ -83,5 +83,7 @@ endif
 set wildmenu
 set wildmode=longest:full,full
 
-" bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion = 1
