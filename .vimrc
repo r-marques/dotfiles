@@ -87,3 +87,18 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Hide tmux status bar when entering vim.
+autocmd VimEnter,VimLeave * silent !tmux set status
+
+" highlight the 120 column
+set colorcolumn=120
+
+" vim splits
+noremap <C-J> <C-W><C-J>
+noremap <C-K> <C-W><C-K>
+noremap <C-L> <C-W><C-L>
+noremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
