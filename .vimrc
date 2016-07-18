@@ -13,9 +13,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'Valloric/YouCompleteMe'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'ervandew/ag'
 Plugin 'flazz/vim-colorschemes'
@@ -26,6 +26,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-jedi'
 Plugin 'zchee/deoplete-clang'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 call vundle#end()
 filetype plugin indent on
@@ -53,8 +55,9 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.egg-info$']
 
 " vim-airline
-"set laststatus=2
-"let g:airline_powerline_fonts=1
+set laststatus=2
+let g:airline_powerline_fonts=1
+" let g:airline_theme = 'solarized'
 
 " Buffer management
 map <leader>l :bnext<CR>
@@ -122,7 +125,12 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#show_call_signatures = 0
  
 " deoplete-clang
-let g:deoplete#sources#clang#libclang_path = '/usr/lib64/llvm/libclang.so'
+let g:deoplete#sources#clang#libclang_path = '/usr/lib64/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/3.7.0/include'
 
-" let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_prog = '/usr/bin/python3'
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
