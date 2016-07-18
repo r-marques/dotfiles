@@ -15,9 +15,14 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'ervandew/ag'
+Plugin 'janko-m/vim-test'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-jedi'
+Plugin 'zchee/deoplete-clang'
 
 call vundle#end()
 filetype plugin indent on
@@ -56,7 +61,7 @@ set hidden
 
 " markdown settings
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-au BufRead,BufNewFile *.md setlocal textwidth=80
+au BufRead,BufNewFile *.md setlocal textwidth=120
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 set complete+=kspell
 
@@ -102,3 +107,18 @@ noremap <C-H> <C-W><C-H>
 
 set splitbelow
 set splitright
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
+" deoplete-jedi
+let g:jedi#completions_enabled = 0
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#smart_auto_mappings = 0
+let g:jedi#show_call_signatures = 0
+ 
+" deoplete-clang
+let g:deoplete#sources#clang#libclang_path = '/usr/lib64/llvm/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/3.7.0/include'
+
+" let g:python3_host_prog = '/usr/bin/python3'
