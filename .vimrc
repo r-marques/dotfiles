@@ -26,7 +26,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-jedi'
 Plugin 'zchee/deoplete-clang'
->>>>>>> 2d3f08faa7404dd2c144e10eb37eab94166df84a
 
 call vundle#end()
 filetype plugin indent on
