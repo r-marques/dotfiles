@@ -18,6 +18,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'ervandew/ag'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'Raimondi/delimitMate'
 
 call vundle#end()
 filetype plugin indent on
@@ -45,8 +48,8 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.egg-info$']
 
 " vim-airline
-set laststatus=2
-let g:airline_powerline_fonts=1
+"set laststatus=2
+"let g:airline_powerline_fonts=1
 
 " Buffer management
 map <leader>l :bnext<CR>
@@ -87,6 +90,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_global_ycm_extra_conf = '/home/rodmar/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Hide tmux status bar when entering vim.
 " autocmd VimEnter,VimLeave * silent !tmux set status
