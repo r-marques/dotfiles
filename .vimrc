@@ -28,6 +28,9 @@ Plugin 'zchee/deoplete-jedi'
 Plugin 'zchee/deoplete-clang'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
+Plugin 'junegunn/goyo.vim'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -125,7 +128,7 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#show_call_signatures = 0
  
 " deoplete-clang
-let g:deoplete#sources#clang#libclang_path = '/usr/lib64/libclang.so'
+let g:deoplete#sources#clang#libclang_path = '/usr/lib64/llvm/libclang.so'
 let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/3.7.0/include'
 
 let g:python3_host_prog = '/usr/bin/python3'
