@@ -70,7 +70,7 @@ set hidden
 
 " markdown settings
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
-au BufRead,BufNewFile *.md setlocal textwidth=120
+au BufRead,BufNewFile *.md setlocal textwidth=79
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 set complete+=kspell
 
@@ -106,8 +106,8 @@ let g:ycm_global_ycm_extra_conf = '/home/rodmar/.vim/bundle/YouCompleteMe/third_
 " Hide tmux status bar when entering vim.
 " autocmd VimEnter,VimLeave * silent !tmux set status
 
-" highlight the 120 column
-set colorcolumn=120
+" highlight the 80 column
+set colorcolumn=80
 
 " vim splits
 noremap <C-J> <C-W><C-J>
