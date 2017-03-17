@@ -31,6 +31,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 Plugin 'junegunn/goyo.vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()
 filetype plugin indent on
@@ -49,9 +50,10 @@ let python_highlight_all=1
 let mapleader = "\<Space>"
 set mouse=a
 
-" Solarized
+" colorscheme
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
+highlight Normal ctermbg=none
 
 " NerdTree
 map <F2> :NERDTreeToggle<CR>
@@ -100,8 +102,8 @@ set wildmode=longest:full,full
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_global_ycm_extra_conf = '/home/rodmar/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_global_ycm_extra_conf = '/home/rodmar/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Hide tmux status bar when entering vim.
 " autocmd VimEnter,VimLeave * silent !tmux set status
@@ -128,8 +130,8 @@ let g:jedi#smart_auto_mappings = 0
 let g:jedi#show_call_signatures = 0
  
 " deoplete-clang
-let g:deoplete#sources#clang#libclang_path = '/usr/lib64/llvm/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang/3.7.0/include'
+let g:deoplete#sources#clang#libclang_path = '/usr/lib64/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib64/clang/3.8.1/include'
 
 let g:python3_host_prog = '/usr/bin/python3'
 
