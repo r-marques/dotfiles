@@ -12,8 +12,6 @@ Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'kien/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'suan/vim-instant-markdown'
@@ -32,6 +30,7 @@ Plugin 'ervandew/supertab'
 Plugin 'junegunn/goyo.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'morhetz/gruvbox'
+Plugin 'itchyny/lightline.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -59,10 +58,12 @@ highlight Normal ctermbg=none
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.egg-info$']
 
-" vim-airline
+" lightline
 set laststatus=2
-let g:airline_powerline_fonts=1
-" let g:airline_theme = 'solarized'
+set noshowmode
+let g:lightline = {
+    \ 'colorscheme': 'seoul256',
+    \ }
 
 " Buffer management
 map <leader>l :bnext<CR>
