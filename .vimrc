@@ -11,7 +11,6 @@ Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-bufferline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'suan/vim-instant-markdown'
@@ -21,9 +20,6 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'Raimondi/delimitMate'
 Plugin 'janko-m/vim-test'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-jedi'
-Plugin 'zchee/deoplete-clang'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
@@ -31,6 +27,20 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'itchyny/lightline.vim'
+Plugin 'euclio/vim-markdown-composer'
+Plugin 'majutsushi/tagbar'
+Plugin 'w0rp/ale'
+Plugin 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plugin 'ncm2/ncm2'
+Plugin 'roxma/nvim-yarp'
+Plugin 'ncm2/ncm2-bufword'
+Plugin 'ncm2/ncm2-tmux'
+Plugin 'ncm2/ncm2-path'
+Plugin 'junegunn/fzf.vim'
+Plugin 'airblade/vim-rooter'
 
 call vundle#end()
 filetype plugin indent on
@@ -82,18 +92,6 @@ if executable('ag')
     " Use ag over grep
     set grepprg=ag\ --nogroup\ --nocolor
 
-    " Use ag in CtrlP for listing files. Lightning fast and respects
-    " .gitignore
-    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-          \ --ignore .git
-          \ --ignore .svn
-          \ --ignore .hg
-          \ --ignore .DS_Store
-          \ --ignore "**/*.pyc"
-          \ -g ""'
-
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
 endif
 
 " turn on vim wildmenu
@@ -102,15 +100,9 @@ set wildmode=longest:full,full
 
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" YouCompleteMe
-" let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_global_ycm_extra_conf = '/home/rodmar/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-
-" Hide tmux status bar when entering vim.
-" autocmd VimEnter,VimLeave * silent !tmux set status
-
 " highlight the 80 column
 set colorcolumn=80
+au BufRead,BufNewFile *.rs setlocal colorcolumn=100
 
 " vim splits
 noremap <C-J> <C-W><C-J>
@@ -121,22 +113,47 @@ noremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
-" deoplete-jedi
-let g:jedi#completions_enabled = 0
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#show_call_signatures = 0
- 
-" deoplete-clang
-let g:deoplete#sources#clang#libclang_path = '/usr/lib64/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib64/clang/3.8.1/include'
-
 let g:python3_host_prog = '/usr/bin/python3'
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" tagbar
+nmap <F8> :TagbarToggle<CR>
+
+" highlight trailing whitespaces
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$/
+
+" LanguageClient
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F3> :call LanguageClient_textDocument_references()<CR>
+" disable linter (it is handled by ale)
+let g:LanguageClient_diagnosticsEnable = 0
+
+" ncm2
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+
+" fzf
+map <C-p> :Files<CR>
+nmap <leader>; :Buffers<CR>
+
+" Permanent undo
+set undodir=~/.vimdid
+set undofile
+
+" ale
+" let g:ale_linters = {'rust': ['rls']}
+let g:ale_rust_cargo_check_all_targets = 1
+let g:ale_rust_cargo_check_tests = 1
+let g:ale_rust_cargo_check_examples = 1
+let g:ale_sign_column_always = 1
