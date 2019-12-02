@@ -66,7 +66,8 @@ highlight Normal ctermbg=none
 
 " NerdTree
 map <F2> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.egg-info$']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.egg-info$', '\.cache$', '\.mypy_cache$', '\.pants\.d$', '\.pytest_cache$', '.git$', '\.pids$']
+let NERDTreeShowHidden=1
 
 " lightline
 set laststatus=2
@@ -100,8 +101,8 @@ set wildmode=longest:full,full
 
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" highlight the 80 column
-set colorcolumn=80
+" highlight the 100 column
+set colorcolumn=100
 au BufRead,BufNewFile *.rs setlocal colorcolumn=100
 
 " vim splits
@@ -153,7 +154,24 @@ set undofile
 
 " ale
 " let g:ale_linters = {'rust': ['rls']}
+let g:ale_linters = {
+    \ 'python': ["pylint", "mypy", "yapf"],
+    \ 'rust': ['rls', 'clippy'],
+\ }
+let g:ale_fixers = {
+    \ 'python': ["black"],
+    \ 'rust': ['fmt'],
+    \ 'html': ['tidy'],
+\ }
 let g:ale_rust_cargo_check_all_targets = 1
 let g:ale_rust_cargo_check_tests = 1
 let g:ale_rust_cargo_check_examples = 1
 let g:ale_sign_column_always = 1
+
+" set spell checking. It should only be enabled for comments
+set spell spelllang=en_us
+
+" allows the use of `w!!` to override readonly restriction
+" for instance when opening a file without sudo
+" https://dev.to/jovica/the-vim-trick-which-will-save-your-time-and-nerves-45pg
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
